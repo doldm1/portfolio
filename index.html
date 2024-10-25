@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        /* Global styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+        }
+
+        /* Grid container for the layout */
+        .parent {
+            display: grid;
+            grid-template-columns: 200px 1fr 200px;
+            grid-template-rows: auto 1fr auto;
+            grid-template-areas:
+                "header header header"
+                "left-side main right-side"
+                "footer footer footer";
+            height: 100vh;
+        }
+
+        /* Styles for sections */
+        .section {
+            padding: 1rem;
+            text-align: center;
+            color: white;
+        }
+
+        header {
+            grid-area: header;
+            background-color: #ff6347; /* coral */
+        }
+
+        .left-side {
+            grid-area: left-side;
+            background-color: #4682b4; /* blue */
+        }
+
+        main {
+            grid-area: main;
+            background-color: #32cd32; /* green */
+        }
+
+        .right-side {
+            grid-area: right-side;
+            background-color: #ffd700; /* yellow */
+        }
+
+        footer {
+            grid-area: footer;
+            background-color: #ff6347; /* coral */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 800px) {
+            .parent {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "header"
+                    "main"
+                    "left-side"
+                    "right-side"
+                    "footer";
+            }
+
+            .left-side, .right-side {
+                text-align: left;
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="parent">
+    <header class="section">Header</header>
+    <div class="left-side section">Left Sidebar</div>
+    <main class="section">Main Content</main>
+    <div class="right-side section">Right Sidebar</div>
+    <footer class="section">Footer</footer>
+</div>
+
+</body>
+</html>
