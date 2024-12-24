@@ -1,53 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './css/styles.css';
-
-function App() {
-    return (
-        <div>
-            <Hero />
-            <About />
-            <Projects />
-            <Contact />
-            <Footer />
-        </div>
-    );
-}
-
-function Hero() {
-    return (
-        <section className="hero">
-            <h1>Welcome to My Website</h1>
-            <p>Creating modern, scalable, and clean web designs.</p>
-            <button className="cta-button">Get in Touch</button>
-        </section>
-    );
-}
-
-function About() {
-    return (
-        <section className="about">
-            <h2>About Me</h2>
-            <p>
-                I am passionate about web development, combining creativity and
-                functionality to build exceptional user experiences.
-            </p>
-        </section>
-    );
-}
-
-function Projects() {
-    return (
-        <section className="projects">
-            <h2>Projects</h2>
-            <div className="project-list">
-                <div className="project-card">Project 1</div>
-                <div className="project-card">Project 2</div>
-                <div className="project-card">Project 3</div>
-            </div>
-        </section>
-    );
-}
+import './css/index.css';
+import Hero from './components/hero'; 
+import Projects from './components/projects'; 
+import About from './components/about';
 
 function Contact() {
     return (
@@ -63,6 +19,18 @@ function Footer() {
         <footer className="footer">
             <p>&copy; 2024 My Portfolio. All rights reserved.</p>
         </footer>
+    );
+}
+
+function App() {
+    return (
+        <div>
+            <Hero />   
+            <About />
+            <Projects /> 
+            <Contact />
+            <Footer />
+        </div>
     );
 }
 
