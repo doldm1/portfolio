@@ -4,9 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: './src/index.js',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'docs'), // Changed from 'dist' to 'docs'
         filename: 'bundle.js',
-        publicPath: '/'
+        publicPath: '/portfolio/' // Add your repository name
     },
     module: {
         rules: [
@@ -41,7 +41,7 @@ module.exports = {
     ],
     devServer: {
         static: {
-            directory: path.join(__dirname, 'dist'),
+            directory: path.join(__dirname, 'docs'),
         },
         port: 9000,
     },
