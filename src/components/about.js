@@ -26,10 +26,19 @@ const About = () => {
       })
       .catch(() => setJoke('Loading jokes... 😄'));
 
-    fetch('https://api.quotable.io/random')
+      fetch('https://quotesondesign.com/wp-json/wp/v2/posts/?orderby=rand')
       .then(res => res.json())
-      .then(data => setQuote(data.content))
-      .catch(() => setQuote('Loading quote...'));
+      .then(data => {
+        if (data && data.length > 0) {
+          // Extract the content and remove HTML tags
+          const quoteContent = data[0].content.rendered.replace(/<\/?[^>]+(>|$)/g, '');
+          setQuote(quoteContent);
+        } else {
+          setQuote('No quotes available at the moment.');
+        }
+      })
+      .catch(() => setQuote('Failed to load quote.'));
+    
 
     return () => observer.disconnect();
   }, []);
@@ -50,8 +59,8 @@ const About = () => {
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
         }`}>
           <div className="text-center mb-20">
-            <span className="font-cursive text-2xl text-indigo-600 block mb-4">Get to know me</span>
-            <h2 className="text-5xl font-bold mb-6">About Me</h2>
+            <span className="font-cursive text-2xl text-indigo-600 block mb-4">Lerne mich kennen</span>
+            <h2 className="text-5xl font-bold mb-6">Über mich</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full"></div>
           </div>
           
@@ -59,10 +68,11 @@ const About = () => {
             {/* Professional Info */}
             <div className="space-y-10">
               <div className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                <h3 className="font-cursive text-3xl text-indigo-600 mb-6">What I Do</h3>
+                <h3 className="font-cursive text-3xl text-indigo-600 mb-6">Was ich mache</h3>
                 <p className="text-gray-700 leading-relaxed text-lg">
-                  I'm passionate about creating user-centered designs that make technology more accessible and enjoyable. 
-                  With a background in UI/UX design, I focus on creating intuitive and beautiful digital experiences.
+                Ich bin begeistert von der Erstellung benutzerzentrierter Designs, die Technologie zugänglicher und angenehmer machen.
+                Mit meinem Hintergrund im UI/UX-Design konzentriere ich mich auf die Erstellung intuitiver und ansprechender digitaler Erlebnisse.
+
                 </p>
               </div>
 
@@ -96,11 +106,9 @@ const About = () => {
             {/* Personal Info & Fun Elements */}
             <div className="space-y-10">
               <div className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                <h3 className="font-cursive text-3xl text-indigo-600 mb-6">When I'm Not Designing</h3>
+                <h3 className="font-cursive text-3xl text-indigo-600 mb-6">Wenn ich nicht designe</h3>
                 <p className="text-gray-700 text-lg leading-relaxed">
-                  You can find me exploring new coffee shops, capturing moments through photography, 
-                  or working on personal creative projects. I believe that these diverse interests 
-                  help fuel my creativity in design.
+                 kann man mich dabei antreffen, wie ich im Fussballstadion mitfiebere, auf dem Platz selbst spiele, besondere Momente fotografisch festhalte oder spannende Filme und Serien entdecke. Ich suche in all meinen Interessen Inspiration, welche zu meiner Kreativität im Design beitragen kann - zukünftig auch bei meiner Kreativität im Bereich der Webentwicklung.
                 </p>
               </div>
 
@@ -110,7 +118,7 @@ const About = () => {
               </div>
 
               <div className="bg-gradient-to-r from-purple-50 to-indigo-50 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                <h4 className="font-cursive text-xl text-indigo-600 mb-4">Daily Inspiration</h4>
+                <h4 className="font-cursive text-xl text-indigo-600 mb-4">Tägliche Inspiration</h4>
                 <p className="text-gray-700 italic text-lg">{quote}</p>
               </div>
             </div>

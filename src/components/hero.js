@@ -74,7 +74,7 @@ const Hero = () => {
           UX/UI Designer & Digital Creator
         </p>
         <p className="text-lg mb-12 text-center text-purple-100/80 font-light max-w-2xl mx-auto leading-relaxed">
-        Ich liebe es, intuitive und ansprechende digitale Erlebnisse zu schaffen, die eine Verbindung zu den Benutzern herstellen und ihr Engagement fördern.
+        Ich liebe es, intuitive und ansprechende digitale Erlebnisse zu schaffen, die eine Verbindung zu den Benutzer:innen herstellen und ihr Engagement fördern.
         </p>
 
         {/* Social Links with enhanced styling */}

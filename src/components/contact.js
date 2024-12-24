@@ -32,8 +32,8 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 relative">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <span className="font-cursive text-2xl text-indigo-600 block mb-4">Get In Touch</span>
-          <h2 className="text-5xl font-bold mb-6">Contact Me</h2>
+          <span className="font-cursive text-2xl text-indigo-600 block mb-4">Nimm Kontakt auf</span>
+          <h2 className="text-5xl font-bold mb-6">Meine Kontaktdaten</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full"></div>
         </div>
 
@@ -41,10 +41,10 @@ const Contact = () => {
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="font-cursive text-3xl text-indigo-600 mb-6">Let's Connect</h3>
+              <h3 className="font-cursive text-3xl text-indigo-600 mb-6">Lasst uns in Kontakt treten</h3>
               <p className="text-gray-600 leading-relaxed text-lg mb-8">
-                I'm always interested in hearing about new projects and opportunities. 
-                Feel free to reach out if you'd like to collaborate or just say hello!
+              Ich bin immer daran interessiert, von neuen Projekten und Möglichkeiten zu hören. 
+              Ihr könnt euch gerne an mich wenden, wenn ihr zusammenarbeiten oder einfach nur Hallo sagen möchtet!
               </p>
             </div>
 
@@ -59,7 +59,7 @@ const Contact = () => {
                 <div>
                   <h4 className="text-lg font-semibold text-gray-700">Email</h4>
                   <a href="mailto:your.email@example.com" className="text-indigo-600 hover:text-indigo-700 transition-colors">
-                    your.email@example.com
+                    doldm1@bfh.ch
                   </a>
                 </div>
               </div>
@@ -72,8 +72,8 @@ const Contact = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-700">Location</h4>
-                  <p className="text-indigo-600">Bern, Switzerland</p>
+                  <h4 className="text-lg font-semibold text-gray-700">Standort</h4>
+                  <p className="text-indigo-600">Bern, Schweiz</p>
                 </div>
               </div>
             </div>
@@ -116,7 +116,7 @@ const Contact = () => {
                     onFocus={() => setFocusedField('name')}
                     onBlur={() => setFocusedField(null)}
                     className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                    placeholder="Your name"
+                    placeholder="Dein Name"
                   />
                 </div>
 
@@ -138,7 +138,7 @@ const Contact = () => {
                     onFocus={() => setFocusedField('email')}
                     onBlur={() => setFocusedField(null)}
                     className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                    placeholder="your.email@example.com"
+                    placeholder="deine.email@beispiel.com"
                   />
                 </div>
 
@@ -149,7 +149,7 @@ const Contact = () => {
                       focusedField === 'message' ? 'text-indigo-600' : 'text-gray-700'
                     }`}
                   >
-                    Message
+                    Nachricht
                   </label>
                   <textarea
                     name="message"
@@ -160,7 +160,7 @@ const Contact = () => {
                     onFocus={() => setFocusedField('message')}
                     onBlur={() => setFocusedField(null)}
                     className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                    placeholder="Your message..."
+                    placeholder="Deine Nachricht..."
                   />
                 </div>
 
@@ -170,7 +170,7 @@ const Contact = () => {
                            font-medium hover:from-indigo-600 hover:to-purple-600 transition-all duration-200
                            transform hover:-translate-y-0.5 hover:shadow-lg"
                 >
-                  Send Message
+                  Nachricht senden
                 </button>
               </div>
             </form>

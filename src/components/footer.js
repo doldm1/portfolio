@@ -1,5 +1,35 @@
 import React, { useState, useEffect } from 'react';
 
+const getWeatherCondition = (code) => {
+  const conditions = {
+    0: 'Klar',
+    1: 'Überwiegend klar',
+    2: 'Teilweise bewölkt',
+    3: 'Bewölkt',
+    45: 'Neblig',
+    48: 'Neblig mit Reif',
+    51: 'Leichter Nieselregen',
+    53: 'Mäßiger Nieselregen',
+    55: 'Starker Nieselregen',
+    61: 'Leichter Regen',
+    63: 'Mäßiger Regen',
+    65: 'Starker Regen',
+    71: 'Leichter Schneefall',
+    73: 'Mäßiger Schneefall',
+    75: 'Starker Schneefall',
+    77: 'Schneegriesel',
+    80: 'Leichte Regenschauer',
+    81: 'Mäßige Regenschauer',
+    82: 'Starke Regenschauer',
+    85: 'Leichte Schneeschauer',
+    86: 'Starke Schneeschauer',
+    95: 'Gewitter',
+    96: 'Gewitter mit Hagel',
+    99: 'Gewitter mit starkem Hagel'
+  };
+  return conditions[code] || 'Keine Daten';
+};
+
 const Footer = () => {
   const [aareTemp, setAareTemp] = useState(null);
   const [weather, setWeather] = useState(null);
@@ -13,9 +43,9 @@ const Footer = () => {
         const aareData = await aareResponse.json();
         setAareTemp(aareData);
 
-        // Fetch weather data for Bern
+        // Fetch weather data for Bern using Open-Meteo
         const weatherResponse = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=Bern,CH&units=metric&appid=YOUR_API_KEY`
+          'https://api.open-meteo.com/v1/forecast?latitude=46.9481&longitude=7.4474&current=temperature_2m,weathercode&timezone=auto'
         );
         const weatherData = await weatherResponse.json();
         setWeather(weatherData);
@@ -50,9 +80,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Info Section */}
           <div>
-            <h3 className="text-xl font-bold mb-4">YourName</h3>
+            <h3 className="text-xl font-bold mb-4">Marcel</h3>
             <p className="text-gray-400 mb-4">
-              UI/UX Designer & Digital Creator based in Bern, Switzerland.
+              UI/UX Designer & Digital Creator aus Bern.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
@@ -70,22 +100,18 @@ const Footer = () => {
 
           {/* Weather Section */}
           <div className="bg-gray-800 rounded-xl p-6 transform hover:scale-105 transition-transform">
-            <h3 className="text-xl font-bold mb-4">Bern Weather</h3>
+            <h3 className="text-xl font-bold mb-4">Wetter Bern</h3>
             {loading ? (
               <p className="text-gray-400">Loading weather data...</p>
             ) : weather ? (
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-400">Temperature</span>
-                  <span className="text-2xl">{Math.round(weather.main?.temp)}°C</span>
+                  <span className="text-gray-400">Temperatur</span>
+                  <span className="text-2xl">{weather.current?.temperature_2m}°C</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-400">Condition</span>
-                  <span className="capitalize">{weather.weather?.[0]?.description}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-400">Humidity</span>
-                  <span>{weather.main?.humidity}%</span>
+                  <span className="text-gray-400">Bedingungen</span>
+                  <span>{getWeatherCondition(weather.current?.weathercode)}</span>
                 </div>
               </div>
             ) : (
@@ -95,22 +121,22 @@ const Footer = () => {
 
           {/* Aare Temperature Section */}
           <div className="bg-gray-800 rounded-xl p-6 transform hover:scale-105 transition-transform">
-            <h3 className="text-xl font-bold mb-4">Aare Temperature</h3>
+            <h3 className="text-xl font-bold mb-4">Aare Temperatur</h3>
             {loading ? (
               <p className="text-gray-400">Loading Aare data...</p>
             ) : aareTemp ? (
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-400">Water Temperature</span>
-                  <span className="text-2xl">{aareTemp.temperature}°C</span>
+                  <span className="text-gray-400">Wasser Temperatur</span>
+                  <span className="text-2xl">{aareTemp.aare.temperature}°C</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-400">Flow Rate</span>
-                  <span>{aareTemp.flow} m³/s</span>
+                  <span className="text-gray-400">Fliessgeschwindigkeit</span>
+                  <span>{aareTemp.aare.flow} m³/s</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-400">Status</span>
-                  <span className="capitalize">{aareTemp.status}</span>
+                  <span className="text-gray-400">Wassertemperatur Status</span>
+                  <span className="capitalize">{aareTemp.aare.temperature_text}</span>
                 </div>
               </div>
             ) : (
@@ -123,10 +149,10 @@ const Footer = () => {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} YourName. All rights reserved.
+              © {new Date().getFullYear()} Marcel. Alle Rechte vorbehalten.
             </p>
             <div className="mt-4 md:mt-0 text-gray-400 text-sm">
-              Designed & Built with ❤️ in Bern
+              Gestaltet & Entwickelt mit ❤️ in Bern in Zusammenarbeit mit claude.ai
             </div>
           </div>
         </div>
