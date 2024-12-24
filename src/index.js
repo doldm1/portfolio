@@ -4,31 +4,18 @@ import './css/index.css';
 import Hero from './components/hero'; 
 import Projects from './components/projects'; 
 import About from './components/about';
-
-function Contact() {
-    return (
-        <section className="contact">
-            <h2>Contact</h2>
-            <p>Email me at: contact@example.com</p>
-        </section>
-    );
-}
-
-function Footer() {
-    return (
-        <footer className="footer">
-            <p>&copy; 2024 My Portfolio. All rights reserved.</p>
-        </footer>
-    );
-}
+import Navigation from './components/navigation';
+import Contact from './components/contact';
+import Footer from './components/footer';
 
 function App() {
     return (
         <div>
-            <Hero />   
-            <About />
-            <Projects /> 
-            <Contact />
+            <Navigation />
+            <div id="home"><Hero /></div>
+            <div id="about"><About /></div>
+            <div id="projects"><Projects /></div>
+            <div id="contact"><Contact /></div>
             <Footer />
         </div>
     );

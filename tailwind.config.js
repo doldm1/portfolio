@@ -1,10 +1,15 @@
 module.exports = {
     content: [
       "./src/**/*.{js,jsx}",
-      "./src/components/**/*.{js,jsx}",
+      "./public/index.html"
     ],
     theme: {
-      extend: {},
+      extend: {
+        fontFamily: {
+          sans: ['Poppins', 'sans-serif'],
+          cursive: ['Dancing Script', 'cursive'],
+        },
+      },
     },
     plugins: [],
   }
