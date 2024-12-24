@@ -152,7 +152,7 @@ const Footer = () => {
               © {new Date().getFullYear()} Marcel. Alle Rechte vorbehalten.
             </p>
             <div className="mt-4 md:mt-0 text-gray-400 text-sm">
-              Gestaltet & Entwickelt mit ❤️ in Bern in Zusammenarbeit mit claude.ai
+              Gestaltet & Entwickelt mit ❤️ in Bern in Zusammenarbeit mit claude.ai. Links in Socialmedia Icons und das Kontaktformular sind bewusst deaktiviert.
             </div>
           </div>
         </div>
